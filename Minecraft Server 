@@ -1,0 +1,424 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Minecraft Server v4.2",
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "u8VPdNoJBK79"
+      },
+      "source": [
+        "# **Minecraft Server in Google Colab!**\n",
+        "**by tester247#2636**\n",
+        "\n",
+        "Hover over each cell and click run on the left side\n",
+        "\n",
+        "Follow through setup if its your first time.. if not skip part 1\n",
+        "\n",
+        "If you have allready uploaded all your server files in \"Minecraft\" folder in Gdrive then skip part 1"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "ChNjr-Yixk2j",
+        "outputId": "aaa1a98f-4ccb-4cfd-930c-c25416e66bfd",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 391
+        }
+      },
+      "source": [
+        "#If you already have all your server files then put them in a folder called \"MineCraft\"\n",
+        "#Make sure the main jar file (spigot, vanilla, forge,etc) is named server.jar\n",
+        "#zip that folder..name it MineCraft.zip and upload it to the main directory of your Gdrive\n",
+        "#run this sell to unzip the contents and you can now skip part 1\n",
+        "\n",
+        "from google.colab import drive\n",
+        "drive.mount('/content/drive')\n",
+        "%cd \"/content/drive/My Drive/\n",
+        "!unzip MineCraft.zip"
+      ],
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Mounted at /content/drive\n"
+          ]
+        },
+        {
+          "output_type": "error",
+          "ename": "ValueError",
+          "evalue": "No closing quotation",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mValueError\u001b[0m                                Traceback (most recent call last)",
+            "\u001b[0;32m/tmp/ipython-input-5-3823185057.py\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      6\u001b[0m \u001b[0;32mfrom\u001b[0m \u001b[0mgoogle\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mcolab\u001b[0m \u001b[0;32mimport\u001b[0m \u001b[0mdrive\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      7\u001b[0m \u001b[0mdrive\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmount\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'/content/drive'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 8\u001b[0;31m \u001b[0mget_ipython\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mrun_line_magic\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'cd'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'\"/content/drive/My Drive/'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      9\u001b[0m \u001b[0mget_ipython\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msystem\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'unzip MineCraft.zip'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.11/dist-packages/IPython/core/interactiveshell.py\u001b[0m in \u001b[0;36mrun_line_magic\u001b[0;34m(self, magic_name, line, _stack_depth)\u001b[0m\n\u001b[1;32m   2416\u001b[0m                 \u001b[0mkwargs\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0;34m'local_ns'\u001b[0m\u001b[0;34m]\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mget_local_scope\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mstack_depth\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   2417\u001b[0m             \u001b[0;32mwith\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mbuiltin_trap\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m-> 2418\u001b[0;31m                 \u001b[0mresult\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mfn\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m*\u001b[0m\u001b[0margs\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mkwargs\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m   2419\u001b[0m             \u001b[0;32mreturn\u001b[0m \u001b[0mresult\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m   2420\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m<decorator-gen-85>\u001b[0m in \u001b[0;36mcd\u001b[0;34m(self, parameter_s)\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.11/dist-packages/IPython/core/magic.py\u001b[0m in \u001b[0;36m<lambda>\u001b[0;34m(f, *a, **k)\u001b[0m\n\u001b[1;32m    185\u001b[0m     \u001b[0;31m# but it's overkill for just that one bit of state.\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    186\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0mmagic_deco\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0marg\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 187\u001b[0;31m         \u001b[0mcall\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0;32mlambda\u001b[0m \u001b[0mf\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m*\u001b[0m\u001b[0ma\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mk\u001b[0m\u001b[0;34m:\u001b[0m \u001b[0mf\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m*\u001b[0m\u001b[0ma\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m**\u001b[0m\u001b[0mk\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    188\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    189\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mcallable\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0marg\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.11/dist-packages/IPython/core/magics/osm.py\u001b[0m in \u001b[0;36mcd\u001b[0;34m(self, parameter_s)\u001b[0m\n\u001b[1;32m    382\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    383\u001b[0m         \u001b[0;32melse\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 384\u001b[0;31m             \u001b[0mopts\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mps\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mparse_options\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mparameter_s\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'qb'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mmode\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0;34m'string'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    385\u001b[0m         \u001b[0;31m# jump to previous\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    386\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mps\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0;34m'-'\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.11/dist-packages/IPython/core/magic.py\u001b[0m in \u001b[0;36mparse_options\u001b[0;34m(self, arg_str, opt_str, *long_opts, **kw)\u001b[0m\n\u001b[1;32m    671\u001b[0m             \u001b[0;31m# If the list of inputs only has 0 or 1 thing in it, there's no\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    672\u001b[0m             \u001b[0;31m# need to look for options\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 673\u001b[0;31m             \u001b[0margv\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0marg_split\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0marg_str\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mposix\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mstrict\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    674\u001b[0m             \u001b[0;31m# Do regular option processing\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    675\u001b[0m             \u001b[0;32mtry\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/local/lib/python3.11/dist-packages/IPython/utils/_process_common.py\u001b[0m in \u001b[0;36marg_split\u001b[0;34m(s, posix, strict)\u001b[0m\n\u001b[1;32m    200\u001b[0m     \u001b[0;32mwhile\u001b[0m \u001b[0;32mTrue\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    201\u001b[0m         \u001b[0;32mtry\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 202\u001b[0;31m             \u001b[0mtokens\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mappend\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mnext\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mlex\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    203\u001b[0m         \u001b[0;32mexcept\u001b[0m \u001b[0mStopIteration\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    204\u001b[0m             \u001b[0;32mbreak\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/lib/python3.11/shlex.py\u001b[0m in \u001b[0;36m__next__\u001b[0;34m(self)\u001b[0m\n\u001b[1;32m    298\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    299\u001b[0m     \u001b[0;32mdef\u001b[0m \u001b[0m__next__\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mself\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 300\u001b[0;31m         \u001b[0mtoken\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mget_token\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    301\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mtoken\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0meof\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    302\u001b[0m             \u001b[0;32mraise\u001b[0m \u001b[0mStopIteration\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/lib/python3.11/shlex.py\u001b[0m in \u001b[0;36mget_token\u001b[0;34m(self)\u001b[0m\n\u001b[1;32m    107\u001b[0m             \u001b[0;32mreturn\u001b[0m \u001b[0mtok\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    108\u001b[0m         \u001b[0;31m# No pushback.  Get a token.\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 109\u001b[0;31m         \u001b[0mraw\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mread_token\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    110\u001b[0m         \u001b[0;31m# Handle inclusions\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    111\u001b[0m         \u001b[0;32mif\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0msource\u001b[0m \u001b[0;32mis\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0;32mNone\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;32m/usr/lib/python3.11/shlex.py\u001b[0m in \u001b[0;36mread_token\u001b[0;34m(self)\u001b[0m\n\u001b[1;32m    189\u001b[0m                         \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"shlex: I see EOF in quotes state\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    190\u001b[0m                     \u001b[0;31m# XXX what error should be raised here?\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m--> 191\u001b[0;31m                     \u001b[0;32mraise\u001b[0m \u001b[0mValueError\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"No closing quotation\"\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m    192\u001b[0m                 \u001b[0;32mif\u001b[0m \u001b[0mnextchar\u001b[0m \u001b[0;34m==\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mstate\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m    193\u001b[0m                     \u001b[0;32mif\u001b[0m \u001b[0;32mnot\u001b[0m \u001b[0mself\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mposix\u001b[0m\u001b[0;34m:\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mValueError\u001b[0m: No closing quotation"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "t59OgT1g21FO"
+      },
+      "source": [
+        "#Part 1: Setup (First Timers)"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "jdqDUh44GKBm"
+      },
+      "source": [
+        "### Step 1: Setup reverse proxy to host your server"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "rl1RP82GujuE"
+      },
+      "source": [
+        "First go to https://dashboard.ngrok.com/ and create a account, then continue."
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "SbwFTDXABSkJ"
+      },
+      "source": [
+        "### Step 2: Setting up all the server files"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Gk_aCrLLBJyH",
+        "outputId": "7898c31a-1e6f-4fed-e57a-f770efc34b39",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 211
+        }
+      },
+      "source": [
+        "#Attaching your google drive to store the server files\n",
+        "drive.mount('/content/drive')\n",
+        "\n",
+        "# Create the directory which will be used for the server\n",
+        "#This will create a folder called \"MineCraft\" in your Gdrive\n",
+        "#make sure there isn't already a folder with the same name\n",
+        "\n",
+        "!mkdir \"/content/drive/My Drive/MineCraft\"\n",
+        "\n",
+        "#Agree to EULA\n",
+        "%cd \"/content/drive/My Drive/MineCraft\"\n",
+        "!echo eula=true > eula.txt\n",
+        "\n",
+        "#UPLOADING your server.properties file\n",
+        "#in your properties file make sure the server ip is blank, server port is 25565, and online mode is set to false\n",
+        "#also if using your own world then make sure the level-name entry matches excactly with your world folder name\n",
+        "from google.colab import files\n",
+        "source = files.upload()"
+      ],
+      "execution_count": 1,
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'drive' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m/tmp/ipython-input-1-348661236.py\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      1\u001b[0m \u001b[0;31m#Attaching your google drive to store the server files\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 2\u001b[0;31m \u001b[0mdrive\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mmount\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'/content/drive'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      3\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      4\u001b[0m \u001b[0;31m# Create the directory which will be used for the server\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      5\u001b[0m \u001b[0;31m#This will create a folder called \"MineCraft\" in your Gdrive\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'drive' is not defined"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "M79hKu852X3-"
+      },
+      "source": [
+        "#Optional\n",
+        "#If you have your own world whose name you have already entered in the properties file\n",
+        "#Then..select the world folder (all three if nether end over are seprate) and zip them\n",
+        "#Rename to world.zip and run this cell to upload and unzip\n",
+        "%cd \"/content/drive/My Drive/MineCraft\"\n",
+        "from google.colab import files\n",
+        "source = files.upload()\n",
+        "!unzip world.zip"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "2dKfGssq4UCk"
+      },
+      "source": [
+        "#Upload your plugins\n",
+        "!mkdir \"/content/drive/My Drive/MineCraft/plugins\"\n",
+        "%cd \"/content/drive/My Drive/MineCraft/plugins\"\n",
+        "from google.colab import files\n",
+        "source = files.upload()"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "A4_Mg-9Ohvtp"
+      },
+      "source": [
+        "You can always come back to this step to add more plugins\n",
+        "to remove them go the the MineCraft folder in Gdrive and delete the jar files"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "Zq-sIdTKK8fB"
+      },
+      "source": [
+        "#Installing WebConsole plugin to manage server/console from web on any device\n",
+        "%cd \"/content/drive/My Drive/MineCraft/plugins\"\n",
+        "!wget https://github.com/mesacarlos/WebConsole/releases/download/v2.1/WebConsole-2.1.jar\n",
+        "\n",
+        "#At this point run the sever once and wait till the webconsole plugin loads\n",
+        "#Once loaded stop the cell\n",
+        "#Towards the left of the screen click the 4th button called *files*\n",
+        "#Navigate to /content/drive/MyDrive/MineCraft/plugins/WebConsole\n",
+        "#Double click on config.yml and it will open\n",
+        "#change the host to \"localhost\"\n",
+        "#port: 6969\n",
+        "#under admin: change user1:pass to any username:password you wish to have\n",
+        "#Hit Ctrl+S to save changes (the * next to config.yml on the top shoud go)\n",
+        "#Close the editor and start server"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "ycAP6dn9E2dI"
+      },
+      "source": [
+        " # Part 2: Start Your Server"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "-mzafjRgTpgg",
+        "outputId": "17f30280-c18c-4ff3-ff8e-261023727373",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "source": [
+        "#Optional\n",
+        "#If you want to open a different World then put the name of that world folder between the quotes below\n",
+        "World_Name=\"name\"\n",
+        "\n",
+        "!sed -i '10s/.*/level-name=$World_Name/' /content/drive/MyDrive/MineCraft/server.properties"
+      ],
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "sed: can't read /content/drive/MyDrive/MineCraft/server.properties: No such file or directory\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "hAErGNC6kcDt"
+      },
+      "source": [
+        "!apt-get install sqlite3\n",
+        "import os\n",
+        "import re\n",
+        "\n",
+        "#Making sure google drive is mounted\n",
+        "from google.colab import drive\n",
+        "drive.mount('/content/drive')\n",
+        "%cd \"/content/drive/MyDrive/MineCraft\"\n",
+        "\n",
+        "#______________________________________________________________________________________________________________________________________________________________________________\n",
+        "\n",
+        "#Updating JAVA\n",
+        "# Update the package lists\n",
+        "!sudo apt update &>/dev/null && echo \"apt cache successfully updated\" || echo \"apt cache update failed, you might receive stale packages\"\n",
+        "# Install OpenJDK 15\n",
+        "!wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -\n",
+        "!sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ &>/dev/null || echo \"Failed to add repo. Still can be ignored if openjdk15 gets installed.\"\n",
+        "!sudo apt-get install adoptopenjdk-15-hotspot-jre &>/dev/null && echo \"Yay! Openjdk15 has been successfully installed.\" || echo \"Failed to install OpenJdk15.\"\n",
+        "#Perform java version check\n",
+        "java_ver = !java -version 2>&1 | awk -F[\\\"\\.] -v OFS=. 'NR==1{print $2}'\n",
+        "if java_ver[0] == \"15\" :\n",
+        "  print(\"Openjdk15 is working correctly, you are good to go.\")\n",
+        "else:\n",
+        "  print(\"Openjdk15 doesn't seems to be installed or isn't working, falling back to java\", java_ver[0], \". You might experience reduced performance.\")\n",
+        "\n",
+        "#_______________________________________________________________________________________________________________________________________________________________________________\n",
+        "\n",
+        "#Downloading the server jar\n",
+        "# Replace \"1.16.3\" with your desired server version.\n",
+        "version = '1.16.3'\n",
+        "\n",
+        "from google.colab import drive\n",
+        "import requests\n",
+        "\n",
+        "#Removing the server jar file if its already there (as sometimes it doesn't run unless downloaded everytime)\n",
+        "!rm \"/content/drive/My Drive/MineCraft/server.jar\"\n",
+        "\n",
+        "print('Downloading to Google Drive...')\n",
+        " #if using some other version (vanilla, paper, forge, etc.. then put direct url under single quotes below )\n",
+        "url = 'https://cdn.getbukkit.org/spigot/spigot-' + version + '.jar'\n",
+        "\n",
+        "r = requests.get(url)\n",
+        "\n",
+        "if r.status_code is 200:\n",
+        "  with open('/content/drive/My Drive/MineCraft/server.jar', 'wb') as f:\n",
+        "    f.write(r.content)\n",
+        "  print('Done!')\n",
+        "else:\n",
+        "  print('Error '+ str(r.status_code) + '! Most likely you entered a unsupported version. Try running the code again if you think that shouldn\\'t have happened.')\n",
+        "\n",
+        "#____________________________________________________________________________________________________________________________________________________________________________\n",
+        "#Configuring ngrok tunnels\n",
+        "!pip install pyngrok --quiet\n",
+        "from pyngrok import ngrok\n",
+        "from termcolor import colored\n",
+        "\n",
+        "# Terminate open tunnels if exist\n",
+        "ngrok.kill()\n",
+        "\n",
+        "# Setting the authtoken\n",
+        "# Get your authtoken from https://dashboard.ngrok.com/auth\n",
+        "NGROK_AUTH_TOKEN = \"\"\n",
+        "ngrok.set_auth_token(NGROK_AUTH_TOKEN)\n",
+        "\n",
+        "# Open a TCP tunnel on port 25565 for Minecraft\n",
+        "public_url = ngrok.connect(25565, proto=\"tcp\", options={\"country\": \"us\"})\n",
+        "print(colored(\"Server IP for game:\", \"green\"), colored(public_url, \"blue\"))\n",
+        "print(colored(\"Omit tcp:// part when connecting \",\"green\"))\n",
+        "\n",
+        "\n",
+        "# Open a HTTPs tunnel on port 6969 for Webconsole\n",
+        "print(colored(\"Server address for WebConsole\",\"green\"))\n",
+        "print(colored(\"Go to https://mesacarlos.es/webconsole/client-v2.1/ and under your server add server\",\"green\"))\n",
+        "print(colored(\"Put any name and below url without http:// for Server IP\",\"green\"))\n",
+        "print(colored(\"Webconsole port is 443\",\"green\"))\n",
+        "web_url = ngrok.connect(6969, proto=\"http\", options={\"country\": \"us\"})\n",
+        "print(colored(\"Server address\",\"green\"), colored(web_url, \"blue\"))\n",
+        "\n",
+        "#____________________________________________________________________________________________________________________________________________________________________________\n",
+        "\n",
+        "#Starting server (I've set min and max 10GB memory allocation )\n",
+        "%cd \"/content/drive/My Drive/MineCraft/\"\n",
+        "print('Starting server...')\n",
+        "!java -Xmx10G -Xms10G -Duser.timezone=\"Asia/Kolkata\" -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -jar server.jar nogui\n",
+        "#You can change your timezone here ^ to get correct timestamps in your logs/console"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "vl5laYdvYeHn"
+      },
+      "source": [
+        "For restarting server stop the above cell and run this"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "j1hYVK6ZYGHD"
+      },
+      "source": [
+        "from google.colab import drive\n",
+        "import requests\n",
+        "\n",
+        "#Removing the server jar file if its already there (as sometimes it doesn't run unless downloaded everytime)\n",
+        "!rm \"/content/drive/My Drive/MineCraft/server.jar\"\n",
+        "\n",
+        "print('Downloading to Google Drive...')\n",
+        " #if using some other version (vanilla, paper, forge, etc.. then put direct url under single quotes below )\n",
+        "url = 'https://cdn.getbukkit.org/spigot/spigot-' + version + '.jar'\n",
+        "\n",
+        "r = requests.get(url)\n",
+        "\n",
+        "if r.status_code is 200:\n",
+        "  with open('/content/drive/My Drive/MineCraft/server.jar', 'wb') as f:\n",
+        "    f.write(r.content)\n",
+        "  print('Done!')\n",
+        "else:\n",
+        "  print('Error '+ str(r.status_code) + '! Most likely you entered a unsupported version. Try running the code again if you think that shouldn\\'t have happened.')\n",
+        "print('Starting server...')\n",
+        "!java -Xmx10G -Xms10G -Duser.timezone=\"Asia/Kolkata\" -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -jar server.jar nogui\n",
+        "#You can change your timezone here ^ to get correct timestamps in your logs/console"
+      ],
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "xnp4Uc3ObMTa"
+      },
+      "source": [
+        "# Backing-up the World"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "IF5PXdfp-SFZ"
+      },
+      "source": [
+        "For now just go to google drive and download the world folder\n",
+        "\n",
+        "---\n",
+        "\n"
+      ]
+    }
+  ]
+}
